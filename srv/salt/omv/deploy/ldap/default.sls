@@ -1,5 +1,3 @@
-#!/bin/sh
-#
 # This file is part of OpenMediaVault.
 #
 # @license   http://www.gnu.org/licenses/gpl.html GPL Version 3
@@ -19,18 +17,19 @@
 # You should have received a copy of the GNU General Public License
 # along with OpenMediaVault. If not, see <http://www.gnu.org/licenses/>.
 
-# Documentation/Howto:
-# https://wiki.ubuntu.com/PAMConfigFrameworkSpec
-# http://www.debian.org/security/pam-auth.de.html
+{% set dirpath = '/srv/salt' | path_join(tpldir) %}
 
-set -e
+include:
+{% for file in salt['file.find'](dirpath, iname='*.sls', print='name') | difference(['init.sls', 'default.sls']) %}
+  - .{{ file | replace('.sls', '') }}
+{% endfor %}
 
-. /etc/default/openmediavault
-. /usr/share/openmediavault/scripts/helper-functions
+{% set config = salt['omv_conf.get']('conf.service.ldap') %}
 
-# PAM profiles are stored below /usr/share/pam-configs
-if [ "$(omv_config_get "//services/ldap/enable")" = "1" -a "$(omv_config_get "//services/ldap/enablepam")" = "1" ]; then
-	pam-auth-update --force --package ldap
-else
-	pam-auth-update --force --package --remove ldap
-fi
+{% if config.enable | to_bool %}
+
+
+{% else %}
+
+
+{% endif %}

@@ -1,5 +1,3 @@
-#!/bin/sh
-#
 # This file is part of OpenMediaVault.
 #
 # @license   http://www.gnu.org/licenses/gpl.html GPL Version 3
@@ -19,11 +17,12 @@
 # You should have received a copy of the GNU General Public License
 # along with OpenMediaVault. If not, see <http://www.gnu.org/licenses/>.
 
-set -e
+{% set config = salt['omv_conf.get']('conf.service.ldap') %}
 
-. /usr/share/openmediavault/scripts/helper-functions
-
-omv_config_add_key "/config/services/ldap" "enablepam" "1"
-omv_config_add_key "/config/services/ldap" "extraclientoptions" ""
-
-exit 0
+configure_pam_ldap_trigger:
+  cmd.run:
+    {% if config.enable | to_bool and config.enablepam | to_bool %}
+    - name: "pam-auth-update --force --package ldap"
+    {% else %}
+    - name: "pam-auth-update --force --package --remove ldap"
+    {% endif %}

@@ -1,5 +1,3 @@
-#!/bin/sh
-#
 # This file is part of OpenMediaVault.
 #
 # @license   http://www.gnu.org/licenses/gpl.html GPL Version 3
@@ -19,11 +17,5 @@
 # You should have received a copy of the GNU General Public License
 # along with OpenMediaVault. If not, see <http://www.gnu.org/licenses/>.
 
-set -e
-
-. /usr/share/openmediavault/scripts/helper-functions
-
-omv_config_add_key "/config/services/ldap" "enablepam" "1"
-omv_config_add_key "/config/services/ldap" "extraclientoptions" ""
-
-exit 0
+include:
+  - .{{ salt['pillar.get']('deploy_ldap', 'default') }}

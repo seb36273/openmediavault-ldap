@@ -1,0 +1,23 @@
+{{ pillar['headers']['multiline'] }}
+
+{%- if config.enable | to_bool %}
+passwd:         files ldap
+group:          files ldap
+shadow:         files ldap
+gshadow:        files ldap
+{%- else %}
+passwd:         files
+group:          files
+shadow:         files
+gshadow:        files
+{%- endif %}
+
+hosts:          files mdns4_minimal [NOTFOUND=return] dns myhostname
+networks:       files
+
+protocols:      db files
+services:       db files
+ethers:         db files
+rpc:            db files
+
+netgroup:       nis
