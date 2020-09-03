@@ -3,7 +3,7 @@ Section: admin
 XB-Plugin-Section: network
 Priority: optional
 Maintainer: Volker Theile <volker.theile@openmediavault.org>
-Developer: Seb36273 <devel@nareo.de>
+Uploaders: Seb36273 <devel@nareo.de>
 Build-Depends: debhelper (>> 7), gettext
 Standards-Version: 3.9.6
 Homepage: http://www.openmediavault.org

@@ -1,18 +1,16 @@
 {{ pillar['headers']['multiline'] }}
 
 {%- if config.enable | to_bool %}
-passwd:         files ldap
-group:          files ldap
-shadow:         files ldap
-gshadow:        files ldap
+passwd:         compat ldap
+group:          compat ldap
+shadow:         compat ldap
 {%- else %}
-passwd:         files
-group:          files
-shadow:         files
-gshadow:        files
+passwd:         compat
+group:          compat
+shadow:         compat
 {%- endif %}
 
-hosts:          files mdns4_minimal [NOTFOUND=return] dns myhostname
+hosts:          files mdns4_minimal [NOTFOUND=return] dns mdns4
 networks:       files
 
 protocols:      db files

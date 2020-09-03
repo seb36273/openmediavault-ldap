@@ -28,8 +28,17 @@ installed, you have an additional menu item for LDAP Server settings.
 The directory *.test* contains some basic config files for test environment
 with OMV5. I need someone to test with other LDAP services.
 
-remove all uploaded packages via `omv-firstaid` tool  
-get omv ldap config with `omv-confdbadm read "conf.service.ldap"`  
+Environment:
+* Openmediavault 5.5.9-1 (Usul) with running SAMBA service
+* OpenLDAP 2.4.47 server (setup with `smbldap-populate`)
+* all smbldap-tools 0.9.9-1 installed on OMV5
+
+If you get in trouble, try:
+* update system with `apt-get update` and `apt-upgrade`
+* remove all uploaded packages via `omv-firstaid` tool
+* remove plugin and reinstall
+* change plugin settings
+* get omv ldap config with `omv-confdbadm read "conf.service.ldap"`
 
 ## Sources
 * https://github.com/openmediavault

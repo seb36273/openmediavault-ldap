@@ -2,4 +2,13 @@
 {%- set ldap_ssl_cacert = salt['pillar.get']('default:OMV_LDAP_CONFIG_TLS_CACERT', '/etc/ssl/certs/ca-certificates.crt') -%}
 {%- set ldap_ssl_reqcert = salt['pillar.get']('default:OMV_LDAP_CONFIG_TLS_REQCERT', 'demand') -%}
 {{ pillar['headers']['multiline'] }}
-
+BASE {{ config.base }}
+URI ldap{% if config.enablessl | to_bool %}'s'{% endif %}://{{ config.host }}{% if config.port | string | length > 0 %}:{{ config.port }}{% endif %}
+{%- if config.enablessl | to_bool %}
+TLS_CACERTDIR {{ ldap_ssl_cacert_dir }}
+TLS_CACERT {{ ldap_ssl_cacert }}
+TLS_REQCERT {{ ldap_ssl_reqcert }}
+{%- endif %}
+{%- if config.extraclientoptions | length > 0 %}
+{{ config.extraclientoptions }}
+{%- endif %}

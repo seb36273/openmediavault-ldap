@@ -1,3 +1,13 @@
 {%- set ldap_libnss_bindpolicy = salt['pillar.get']('default:OMV_LDAP_LIBNSS_BINDPOLICY', 'soft') -%}
 {{ pillar['headers']['multiline'] }}
-
+base {{ config.base }}
+uri ldap{% if config.enablessl | to_bool %}'s'{% endif %}://{{ config.host }}{% if config.port | string | length > 0 %}:{{ config.port }}{% endif %}
+ldap_version {{ ldap_version }}
+rootbinddn {{ config.rootbinddn }}
+bind_policy {{ ldap_libnss_bindpolicy }}
+nss_base_passwd {{ config.usersuffix }},{{ config.base }}
+nss_base_shadow {{ config.usersuffix }},{{ config.base }}
+nss_base_group {{ config.groupsuffix }},{{ config.base }}
+{%- if config.extraoptions | length > 0 %}
+{{ extraoptions }}
+{%- endif %}
