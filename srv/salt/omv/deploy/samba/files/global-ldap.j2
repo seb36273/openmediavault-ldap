@@ -1,0 +1,10 @@
+{%- set smb_security = salt['pillar.get']('default:OMV_SAMBA_SECURITY', 'user') -%}
+{%- set smb_ldap_ssl = salt['pillar.get']('default:OMV_SAMBA_LDAP_SSL', 'off') -%}
+{%- set smb_ldap_pwdsync = salt['pillar.get']('default:OMV_SAMBA_LDAP_PASSWDSYNC', 'yes') -%}
+{%- set smb_ldap_sam_trusted = salt['pillar.get']('default:OMV_SAMBA_LDAP_LDAPSAMTRUSTED', 'no') -%}
+#======================= LDAP Settings =======================
+security = {{ smb_security }}
+passdb backend = ldapsam:ldap://{{ config.host }}:{{ config.port }}
+ldap ssl = {{ smb_ldap_ssl }}
+ldap passwd sync = {{ smb_ldap_pwdsync }}
+ldapsam:trusted = {{ smb_ldap_sam_trusted }}

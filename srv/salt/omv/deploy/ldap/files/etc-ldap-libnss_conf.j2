@@ -1,0 +1,3 @@
+{%- set ldap_libnss_bindpolicy = salt['pillar.get']('default:OMV_LDAP_LIBNSS_BINDPOLICY', 'soft') -%}
+{{ pillar['headers']['multiline'] }}
+

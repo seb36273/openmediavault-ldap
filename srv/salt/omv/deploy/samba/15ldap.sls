@@ -17,9 +17,25 @@
 # You should have received a copy of the GNU General Public License
 # along with OpenMediaVault. If not, see <http://www.gnu.org/licenses/>.
 
-{% set dirpath = '/srv/salt' | path_join(tpldir) %}
+{% set config = salt['omv_conf.get']('conf.service.ldap') %}
 
-include:
-{% for file in salt['file.find'](dirpath, iname='*.sls', print='name') | difference(['init.sls', 'default.sls']) %}
-  - .{{ file | replace('.sls', '') }}
-{% endfor %}
+{% set smb_config_file = salt['pillar.get']('default:OMV_SAMBA_CONFIG', '/etc/samba/smb.conf') %}
+
+{% if config.enable | to_bool %}
+
+configure_samba_global_ldap:
+  file.append:
+    - name: {{ smb_config_file }}
+    - sources:
+      - salt://{{ tpldir }}/files/global-ldap.j2
+    - template: jinja
+    - context:
+       config: {{ config | json }}
+    - watch_in:
+      - service: start_samba_service
+
+configure_samba_passwd_ldap:
+  cmd.run:
+    - name: "smbpasswd -w {{ config.rootbindpw }} 2>&1"
+
+{% endif %}
