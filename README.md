@@ -1,16 +1,19 @@
 # Openmediavault LDAP
 
-This plugin connects to an OPEN-LDAP Server for centralized user management
-and authentification. It adapts the official LDAP plugin for OMV4 to use it
+This plugin connects OMV5 to an OPEN-LDAP Server for centralized user management
+and authentification. It adapts the official LDAP plugin [1] for OMV4 to use it
 with OMV5.  
-Basically there aren't any fundamental changes yet. Actually it uses
-PAM auth with *libnss-ldapd* as default. I will switch to the *libpam-ldapd*
-later on. Maybe we should use PAM auth with SSSD in future.  
+Basically there aren't any fundamental changes yet. Actually you can use LDAP
+for User- and Groupmanagement. Additionally you can activate PAM auth with 
+*libpam-ldap* system wide via LDAP. The name switch service is done with 
+*libnss-ldap*. For caching actually the NSCD service is used, maybe we should
+SSSD in future. A good explanation of the pam auth and nss process will give
+you the reference [4].    
 This repo is under development. Checkout the master branch for stable 
 releases. If you encounter some problems make a new issue or write an email
 to *devel[at]nareo.de*.  
-I am not responsible for loss of data. Please
-make always a full backup of your OMV machine before installing this plugin!
+I am not responsible for loss of your data! Please make always a full backup
+of your OMV machine before installing this plugin!
 
 ## Build DEBIAN package
 
@@ -40,7 +43,9 @@ If you get in trouble, try:
 * change plugin settings
 * get omv ldap config with `omv-confdbadm read "conf.service.ldap"`
 
-## Sources
-* https://github.com/openmediavault
-* https://wiki.debian.org/LDAP/PAM
-* https://linux-club.de/wiki/opensuse/Samba_und_OpenLDAP
+## References
+* [1]  https://github.com/openmediavault
+* [2]  https://wiki.debian.org/LDAP/PAM
+* [3]  https://linux-club.de/wiki/opensuse/Samba_und_OpenLDAP
+* [4]  https://www.debuntu.org/how-to-set-up-a-ldap-server-and-its-clients-page-2/
+* [5]  https://deepdoc.at/dokuwiki/doku.php?id=server_und_serverdienste:openldap_mit_samba_als_pdc_neues_backend
