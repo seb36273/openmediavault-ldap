@@ -17,26 +17,41 @@
 # You should have received a copy of the GNU General Public License
 # along with OpenMediaVault. If not, see <http://www.gnu.org/licenses/>.
 
+{% set dirpath = '/srv/salt' | path_join(tpldir) %}
+
+include:
+{% for file in salt['file.find'](dirpath, iname='*.sls', print='name') | difference(['init.sls', 'default.sls']) %}
+  - .{{ file | replace('.sls', '') }}
+{% endfor %}
+
 {% set config = salt['omv_conf.get']('conf.service.ldap') %}
 
-{% if config.enable | to_bool %}
+{% if config.enable | to_bool and config.enablepam | to_bool %}
 
-configure_ldap:
-  file.managed:
-    - name: "/etc/ldap/ldap.conf"
-    - source:
-      - salt://{{ tpldir }}/files/etc-ldap_conf.j2
-    - template: jinja
-    - context:
-        config: {{ config | json }}
-    - user: root
-    - group: root
-    - mode: 644
+start_nss_service_nslcd:
+  service.running:
+    - name: nslcd
+    - enable: True
+    - require:
+      - file: "/etc/nslcd.conf"
+
+start_nss_service_nscd:
+  service.running:
+    - name: nscd
+    - enable: True
+    - require:
+      - file: "/etc/nscd.conf"
 
 {% else %}
 
-remove_ldap:
-  file.absent:
-    - name: "/etc/ldap/ldap.conf"
+stop_nss_service_nslcd:
+  service.dead:
+    - name: nslcd
+    - enable: False
+
+stop_nss_service_nscd:
+  service.dead:
+    - name: nscd
+    - enable: False
 
 {% endif %}

@@ -19,14 +19,55 @@
 
 {% set config = salt['omv_conf.get']('conf.service.ldap') %}
 
-configure_ldap_nsswitch_conf:
+prereq_ldap:
+  salt.state:
+    - tgt: '*'
+    - sls: omv.deploy.ldap
+
+prereq_nss:
+  salt.state:
+    - tgt: '*'
+    - sls: omv.deploy.nss
+
+{% if config.enable | to_bool and config.enablepam | to_bool %}
+
+configure_pam_ldap:
   file.managed:
-    - name: "/etc/nsswitch.conf"
+    - name: "/etc/pam_ldap.conf"
     - source:
-      - salt://{{ tpldir }}/files/etc-nsswitch_conf.j2
+      - salt://{{ tpldir }}/files/etc-pam-ldap_conf.j2
     - template: jinja
     - context:
         config: {{ config | json }}
     - user: root
     - group: root
-    - mode: 644
+    - mode: 600
+
+configure_pam_ldap_passwd:
+  file.managed:
+    - name: "/etc/pam_secret.conf"
+    - contents: |
+       {{ config.rootbindpw }}
+    - user: root
+    - group: root
+    - mode: 600
+
+activate_pam_ldap_auth:
+  cmd.run:
+    - name: "pam-auth-update --force --package ldap"
+
+{% else %}
+
+deactivate_pam_ldap_auth:
+  cmd.run:
+    - name: "pam-auth-update --force --package --remove ldap"
+
+remove_pam_ldap:
+  file.absent:
+    - name: "/etc/pam_ldap.conf"
+
+remove_pam_ldap_passwd:
+  file.absent:
+    - name: "/etc/pam_secret.conf"
+
+{% endif %}

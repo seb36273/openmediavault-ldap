@@ -1,9 +1,6 @@
+{%- set ldap_version = salt['pillar.get']('default:OMV_LDAP_LDAPVERSION', '3') -%}
 {{ pillar['headers']['multiline'] }}
 uri ldap{% if config.enablessl | to_bool %}'s'{% endif %}://{{ config.host }}{% if config.port | string | length > 0 %}:{{ config.port }}{% endif %}
-ldap_version {{ ldap_version }}
 base {{ config.base }}
-binddn {{ config.rootbinddn }}
-{%- if config.rootbindpw | length > 0 %}
-bindpw rootbindpw
-{%- endif %}
-pam_password crypt
+rootbinddn {{ config.rootbinddn }}
+ldap_version {{ ldap_version }}

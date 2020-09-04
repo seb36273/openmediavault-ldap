@@ -1,0 +1,8 @@
+{{ pillar['headers']['multiline'] }}
+uri ldap{% if config.enablessl | to_bool %}'s'{% endif %}://{{ config.host }}{% if config.port | string | length > 0 %}:{{ config.port }}{% endif %}
+base {{ config.base }}
+rootbinddn {{ config.rootbinddn }}
+ldap_version {{ ldap_version }}
+{%- if config.extraoptions | length > 0 %}
+{{ extraoptions }}
+{%- endif %}

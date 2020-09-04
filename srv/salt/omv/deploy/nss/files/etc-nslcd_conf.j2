@@ -1,0 +1,22 @@
+{{ pillar['headers']['multiline'] }}
+uri ldap{% if config.enablessl | to_bool %}'s'{% endif %}://{{ config.host }}{% if config.port | string | length > 0 %}:{{ config.port }}{% endif %}
+base {{ config.base }}
+
+binddn {{ config.rootbinddn }}
+bindpw {{ config.rootbindpw }}
+
+ldap_version {{ ldap_version }}
+
+tls_cacertfile /etc/ssl/certs/ca-certificates.crt
+{%- if config.enablessl | to_bool %}
+ssl on
+{%- else %}
+ssl off
+{%- endif %}
+
+
+map passwd uid sAMAccountName
+filter passwd (objectClass=user)
+
+uid nslcd
+gid nslcd

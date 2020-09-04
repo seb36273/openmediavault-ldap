@@ -1,6 +1,9 @@
-openmediavault-ldap (5.3.9~2) stable; urgency=low
+openmediavault-ldap (5.3.9~3) stable; urgency=low
 
-  * Minor bugfixes and restructure code
+  * Minor bugfixes and restructured code
+  * Use newer PAM auth modules libpam-ldapd and libnss-ldapd
+  * Configure /etc/pam.d/ files
+  * NSS is done with NSLCD for communication with LDAP and NSCD for caching 
 
  -- Seb36273 <devel@nareo.de>  Fri, 04 Sep 2020 12:32:18 +0100
 
