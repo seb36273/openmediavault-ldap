@@ -61,7 +61,7 @@ class OMVRpcServiceLDAP extends \OMV\Rpc\ServiceAbstract {
 	 *   \em base The base DN.
 	 *   \em rootbinddn The root bind DN.
 	 *   \em rootbindpw The password used to bind to the LDAP server.
-	 *   \em usersuffix The group suffix, e.g. ou=Users.
+	 *   \em usersuffix The user suffix, e.g. ou=Users.
 	 *   \em groupsuffix The group suffix, e.g. ou=Groups.
 	 *   \em extraoptions The extra libnss.conf options.
 	 * @param context The context of the caller.
