@@ -9,5 +9,5 @@ nss_base_passwd {{ config.usersuffix }},{{ config.base }}
 nss_base_shadow {{ config.usersuffix }},{{ config.base }}
 nss_base_group {{ config.groupsuffix }},{{ config.base }}
 {%- if config.extraoptions | length > 0 %}
-{{ extraoptions }}
+{{ config.extraoptions }}
 {%- endif %}
