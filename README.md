@@ -17,10 +17,13 @@ I am not responsible for loss of your data! Please make always a full backup
 of your OMV machine before installing this plugin!
 
 ## Install dependencies
+
 sudo apt install build-essential git curl debhelper libnss-ldap smbldap-tools
 
 ## Get code
+
 cd /usr/local/src
+
 git clone https://github.com/lucapiccio/openmediavault-ldap.git
 
 
