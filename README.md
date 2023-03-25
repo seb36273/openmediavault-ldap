@@ -16,6 +16,14 @@ Be aware: This code was tested in a clean environment with fresh installed OMV5 
 I am not responsible for loss of your data! Please make always a full backup
 of your OMV machine before installing this plugin!
 
+## Install dependencies
+sudo apt install build-essential git curl debhelper libnss-ldap smbldap-tools
+
+## Get code
+cd /usr/local/src
+git clone https://github.com/seb36273/openmediavault-ldap.git
+
+
 ## Build DEBIAN package
 
 Create DEB package with `dpkg-buildpackage -uc -us` inside the
