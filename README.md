@@ -21,7 +21,7 @@ sudo apt install build-essential git curl debhelper libnss-ldap smbldap-tools
 
 ## Get code
 cd /usr/local/src
-git clone https://github.com/seb36273/openmediavault-ldap.git
+git clone https://github.com/lucapiccio/openmediavault-ldap.git
 
 
 ## Build DEBIAN package
