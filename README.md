@@ -18,7 +18,7 @@ of your OMV machine before installing this plugin!
 
 ## Install dependencies
 
-sudo apt install build-essential git curl debhelper libnss-ldap smbldap-tools
+sudo apt install build-essential git curl debhelper libnss-ldap libpam-ldap smbldap-tools
 
 ## Get code
 
