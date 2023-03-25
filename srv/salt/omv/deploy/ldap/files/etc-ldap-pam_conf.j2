@@ -1,6 +1,6 @@
 {{ pillar['headers']['multiline'] }}
 base {{ config.base }}
-uri ldap{% if config.enablessl | to_bool %}'s'{% endif %}://{{ config.host }}{% if config.port | string | length > 0 %}:{{ config.port }}{% endif %}
+uri ldap{% if config.enablessl | to_bool %}s{% endif %}://{{ config.host }}{% if config.port | string | length > 0 %}:{{ config.port }}{% endif %}
 ldap_version {{ ldap_version }}
 binddn {{ config.rootbinddn }}
 {%- if config.rootbindpw | length > 0 %}
