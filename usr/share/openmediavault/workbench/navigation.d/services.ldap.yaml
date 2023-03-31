@@ -1,0 +1,8 @@
+version: "1.0"
+type: navigation-item
+data:
+  path: "services.ldap"
+  text: _("LDAP Directory Service")
+  position: 5
+  icon: "mdi:mdi-account-card-details"
+  url: "/services/ldap"

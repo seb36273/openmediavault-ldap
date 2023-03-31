@@ -49,6 +49,12 @@ msgstr "Impostazioni generali"
 msgid "Groups suffix"
 msgstr "Suffisso dei gruppi"
 
+msgid "Machine suffix"
+msgstr "Suffisso delle Machines"
+
+msgid "IdMap suffix"
+msgstr "Suffisso dei IdMap"
+
 msgid "Host"
 msgstr "Host"
 

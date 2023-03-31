@@ -43,7 +43,7 @@ Ext.define("OMV.module.admin.privilege.ldap.Settings", {
 				xtype: "checkbox",
 				name: "enable",
 				fieldLabel: _("Enable"),
-				checked: false
+				checked: true
 			},{
 				xtype: "textfield",
 				name: "host",
@@ -66,15 +66,15 @@ Ext.define("OMV.module.admin.privilege.ldap.Settings", {
 				allowBlank: false,
 				plugins: [{
 					ptype: "fieldinfo",
-					text: _("Specifies the port to connect to.")
+					text: _("Specifies the port to connect to. Default 389 StartTLS")
 				}],
 				value: 389
 			},{
 				xtype: "checkbox",
 				name: "enablessl",
-				fieldLabel: _("Enable explicit SSL"),
+				fieldLabel: _("Enable explicit SSL instead of StartTLS"),
 				checked: false,
-				boxLabel: _("Enable secure connection.")
+				boxLabel: _("Enable SSL secure connection.")
 			},{
 				xtype: "textfield",
 				name: "base",
@@ -108,7 +108,7 @@ Ext.define("OMV.module.admin.privilege.ldap.Settings", {
 				xtype: "textfield",
 				name: "usersuffix",
 				fieldLabel: _("Users suffix"),
-				allowBlank: false,
+				allowBlank: true,
 				plugins: [{
 					ptype: "fieldinfo",
 					text: _("Specifies the user suffix, e.g. 'ou=Users'."),
@@ -118,12 +118,32 @@ Ext.define("OMV.module.admin.privilege.ldap.Settings", {
 				xtype: "textfield",
 				name: "groupsuffix",
 				fieldLabel: _("Groups suffix"),
-				allowBlank: false,
+				allowBlank: true,
 				plugins: [{
 					ptype: "fieldinfo",
 					text: _("Specifies the group suffix, e.g. 'ou=Groups'."),
 				}],
 				value: "ou=Groups"
+			},{
+				xtype: "textfield",
+				name: "machinessuffix",
+				fieldLabel: _("Machine suffix"),
+				allowBlank: true,
+				plugins: [{
+					ptype: "fieldinfo",
+					text: _("Specifies the machines (serveurs) suffix, e.g. 'ou=Computers'."),
+				}],
+				value: "ou=Computers"
+			},{
+				xtype: "textfield",
+				name: "idmapsuffix",
+				fieldLabel: _("IdMap suffix"),
+				allowBlank: true,
+				plugins: [{
+					ptype: "fieldinfo",
+					text: _("Specifies the idmap suffix, e.g. 'ou=idmap'."),
+				}],
+				value: "ou=idmap"
 			},{
 				xtype: "checkbox",
 				name: "enablepam",
@@ -137,7 +157,7 @@ Ext.define("OMV.module.admin.privilege.ldap.Settings", {
 				allowBlank: true,
 				plugins: [{
 					ptype: "fieldinfo",
-					text: _("Please check the <a href='http://linux.die.net/man/5/nss_ldap' target='_blank'>manual page</a> for more details.")
+					text: _("Please check the <a href='https://wiki.debian.org/fr/LDAP/NSS' target='_blank'>manual page</a> for more details.")
 				}]
 			},{
 				xtype: "textarea",
@@ -146,7 +166,7 @@ Ext.define("OMV.module.admin.privilege.ldap.Settings", {
 				allowBlank: true,
 				plugins: [{
 					ptype: "fieldinfo",
-					text: _("Please check the <a href='http://linux.die.net/man/5/ldap.conf' target='_blank'>manual page</a> for more details.")
+					text: _("Please check the <a href='https://manpages.debian.org/bullseye/libnss-ldap/libnss-ldap.conf.5.en.html' target='_blank'>manual page</a> for more details. Ex: tls_cert *** tls_key *** tls_cacertfile ***")
 				}]
 			}]
 		}];
