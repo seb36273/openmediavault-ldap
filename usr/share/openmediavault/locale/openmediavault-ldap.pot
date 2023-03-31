@@ -47,6 +47,12 @@ msgstr ""
 msgid "Groups suffix"
 msgstr ""
 
+msgid "Machine suffix"
+msgstr ""
+
+msgid "IdMap suffix"
+msgstr ""
+
 msgid "Host"
 msgstr ""
 

@@ -1,0 +1,96 @@
+version: "1.0"
+type: component
+data:
+  name: omv-services-ldap-settings
+  type: formPage
+  config:
+    request:
+      service: LDAP
+      get:
+        method: getSettings
+      post:
+        method: setSettings
+    fields:
+      - type: checkbox
+        name: enable
+        label: _("Enabled")
+        value: true
+      - type: numberInput
+        name: port
+        label: _("Port")
+        value: 389
+        validators:
+          required: true
+          min: 1
+          max: 65535
+          patternType: port
+      - type: textInput
+        name: host
+        label: _("Host")
+        hint: _("The FQDN or IP address of the server.")
+        value: 'ldap.example.net'
+        validators:
+          required: true
+      - type: checkbox
+        name: enablessl
+        label: _("Enable explicit SSL instead of StartTLS")
+        hint: _("Enable SSL secure connection.")
+        value: false
+      - type: textInput
+        name: base
+        label: _("Base DN")
+        hint: _("Specifies the base distinguished name (DN) to use as search base, e.g. 'dc=example,dc=net'.")
+        value: "dc=example,dc=net"
+      - type: textInput
+        name: rootbinddn
+        label: _("Root Bind DN")
+        hint: _("Specifies the distinguished name (DN) with which to bind to the directory server for lookups, e.g. 'cn=manager,dc=example,dc=net'.")
+        value: "cn=manager,dc=example,dc=net"
+      - type: passwordInput
+        name: rootbindpw
+        label: _("Password")
+        hint: _("Specifies the credentials with which to bind.")
+        value: ""
+        modifiers:
+          - type: hidden
+      - type: textInput
+        name: usersuffix
+        label: _("Users suffix")
+        hint: _("Specifies the user suffix, e.g. 'ou=Users'.")
+        value: "ou=Users"
+      - type: textInput
+        name: groupsuffix
+        label: _("Groups suffix")
+        hint: _("Specifies the group suffix, e.g. 'ou=Groups'.")
+        value: "ou=Groups"
+      - type: textInput
+        name: machineuffix
+        label: _("Machines suffix")
+        hint: _("Specifies the machines suffix, e.g. 'ou=Computers'.")
+        value: "ou=Computers"
+      - type: textInput
+        name: idmapsuffix
+        label: _("IdMap suffix")
+        hint: _("Specifies the idmap suffix, e.g. 'ou=idmap'.")
+        value: "ou=idmap"
+      - type: checkbox
+        name: enablepam
+        label: _("Enable PAM")
+        hint: _("Use LDAP for authentication system-wide along with other authentication sources.")
+        value: true
+      - type: textInput
+        name: extraoptions
+        label: _("Extra options LIBNSS-LDAP.CONF")
+        hint: _("Please check the <a href='https://manpages.debian.org/bullseye/libnss-ldap/libnss-ldap.conf.5.en.html' target='_blank'>manual page</a> for more details.")
+        value: ''
+      - type: textInput
+        name: extraclientoptions
+        label: _("Extra client options LDAP.CONF")
+        hint: _("Please check the <a href='https://manpages.debian.org/bullseye/libldap-common/ldap.conf.5.en.html' target='_blank'>manual page</a> for more details.")
+        value: ''
+    buttons:
+      - template: submit
+      - template: cancel
+        execute:
+          type: url
+          url: /services/ldap/settings
