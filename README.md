@@ -34,7 +34,7 @@ Create DEB package with `dpkg-buildpackage -uc -us` inside the
 source directory. The \*.deb file will be placed in the parent
 directory.
 
-## Install Plugin into Openmediavault 5
+## Install Plugin into Openmediavault 6
 
 Upload the generated \*.deb file to OMV6 plugins and install it. Once it is
 installed, you have an additional menu item for LDAP Server settings.
