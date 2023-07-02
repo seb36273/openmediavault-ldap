@@ -25,7 +25,7 @@ sudo apt install build-essential git curl debhelper libnss-ldap libpam-ldap smbl
 
 cd /usr/local/src
 
-git clone https://github.com/lucapiccio/openmediavault-ldap.git
+git clone <repository url>
 
 
 ## Build DEBIAN package
@@ -45,7 +45,7 @@ The directory *.test* contains some basic config files for test environment
 with OMV6. I need someone to test with other LDAP services.
 
 Environment:
-* Openmediavault 6.3.5-2 (Usul) with running SAMBA service
+* Openmediavault 6.3.5-2 (Shaitan,) with running SAMBA service
 * OpenLDAP 2.4.47 server (setup with `smbldap-populate`)
 * all smbldap-tools 0.9.9-1 installed on OMV6
 
