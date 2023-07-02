@@ -4,6 +4,6 @@ uri ldap{% if config.enablessl | to_bool %}'s'{% endif %}://{{ config.host }}{% 
 ldap_version {{ ldap_version }}
 binddn {{ config.rootbinddn }}
 {%- if config.rootbindpw | length > 0 %}
-bindpw rootbindpw
+bindpw {{ config.rootbinddn }}
 {%- endif %}
 pam_password crypt
