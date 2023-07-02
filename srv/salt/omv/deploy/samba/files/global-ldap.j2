@@ -11,5 +11,6 @@ ldap admin dn = {{ config.rootbinddn }}
 {% if config.groupsuffix | string | length > 0 %}ldap group suffix = {{ config.groupsuffix }}
 {% if config.machinesuffix | string | length > 0 %}ldap machine suffix = {{ config.machinesuffix }}
 {% if config.idmapsuffix | string | length > 0 %}ldap idmap suffix = {{ config.idmapsuffix }}{% endif %}
+ldap ssl = {{ smb_ldap_ssl }}
 ldap passwd sync = {{ smb_ldap_pwdsync }}
 ldapsam:trusted = {{ smb_ldap_sam_trusted }}
