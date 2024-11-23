@@ -8,6 +8,14 @@
 
 {% if config.enable | to_bool %}
 
+configure_ldap_dir:
+  file.directory:
+    - name: "/etc/ldap"
+    - user: "root"
+    - group: "root"
+    - mode: 755
+    - makedirs: True
+
 configure_ldap:
   file.managed:
     - name: {{ ldap_config_file }}
