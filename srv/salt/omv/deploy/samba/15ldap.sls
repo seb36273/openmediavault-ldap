@@ -1,8 +1,8 @@
 {% set config = salt['omv_conf.get']('conf.service.ldap') %}
-
+{% set smb_config = salt['omv_conf.get']('conf.service.smb') %}
 {% set smb_config_file = salt['pillar.get']('default:OMV_SAMBA_CONFIG', '/etc/samba/smb.conf') %}
 
-{% if config.enable | to_bool %}
+{% if config.enable | to_bool and smb_config.enable | to_bool %}
 
 configure_samba_global_ldap:
   file.append:
