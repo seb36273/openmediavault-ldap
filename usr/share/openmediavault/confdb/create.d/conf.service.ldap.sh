@@ -58,7 +58,7 @@ if ! omv_config_exists "/config/services/ldap"; then
 	omv_config_add_key "/config/services/ldap" "usersuffix" "ou=Users"
 	omv_config_add_key "/config/services/ldap" "groupsuffix" "ou=Groups"
 	omv_config_add_key "/config/services/ldap" "machinesuffix" "ou=Computers"
-	omv_config_add_key "/config/services/ldap" "idmapuffix" "ou=idmap"
+	omv_config_add_key "/config/services/ldap" "idmapsuffix" "ou=idmap"
 	omv_config_add_key "/config/services/ldap" "enablepam" "1"
 	omv_config_add_key "/config/services/ldap" "extraoptions" ""
 	omv_config_add_key "/config/services/ldap" "extraclientoptions" ""
