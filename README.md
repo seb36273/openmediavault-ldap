@@ -33,9 +33,9 @@ installed, you have an additional menu item for LDAP Server settings.
 
 ## Environment for Testing
 
-* OpenMediaVault 5.6.26-1 (Usul) with running SAMBA service
+* OpenMediaVault 6.9.16-1 (Usul) with running SAMBA service
 * OpenLDAP 2.4.47 server (setup with `smbldap-populate`)
-* all smbldap-tools 0.9.9-1 installed on OpenMediaVault
+* all smbldap-tools 0.9.11-2 installed on OpenMediaVault
 
 ## Troubleshooting
 
