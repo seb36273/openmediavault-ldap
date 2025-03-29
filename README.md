@@ -1,22 +1,20 @@
-# Openmediavault LDAP
+# LDAP Plugin for OpenMediaVault
 
-This plugin connects OMV5 to an OPEN-LDAP Server for centralized user management
-and authentification. It adapts the official LDAP plugin [1] for OMV4 to use it
-with OMV5.  
-Basically there aren't any fundamental changes up to 5.3.9-r1 tag. You can use LDAP
+This plugin connects OpenMediaVault to an LDAP Server for centralized user management
+and authentification.
+
+You can use LDAP
 for system wide User- and Groupmanagement. Additionally you can activate PAM auth 
-with *libpam-ldapd* module. The name switch service is done with *libnss-ldapd*.
+with `libpam-ldapd` module. The name switch service is done with `libnss-ldapd`.
 For caching actually the NSCD service is used, maybe we should change from NSLCD to 
 SSSD in future. A good explanation of the pam auth and nss process will give
-you the reference [4].  
-This repo is under development. Checkout the tags in the master branch for stable 
-and tested releases. If you encounter some problems make a new issue or write an email
-to *devel[at]nareo.de*.  
-Be aware: This code was tested in a clean environment with fresh installed OMV5 setup.
-I am not responsible for loss of your data! Please make always a full backup
-of your OMV machine before installing this plugin!
+you the reference [4].
 
-## Install dependencies
+**Be aware**: This code was tested in a clean environment with fresh installed OpenMediaVault setup.
+I am not responsible for loss of your data! Please make always a full backup
+of your OpenMediaVault machine before installing this plugin!
+
+## Install Dependencies
 
 `sudo apt install libnss-ldap libpam-ldap smbldap-tools`
 
@@ -28,20 +26,18 @@ Create `.deb` package with `dpkg-buildpackage -uc -us` inside the
 source directory. The `.deb` file will be placed in the parent
 directory.
 
-## Install Plugin into Openmediavault 5
+## Install Plugin into OpenMediaVault
 
-Upload the generated `.deb` file to OMV5 plugins and install it. Once it is
+Upload the generated `.deb` file to OpenMediaVault plugins and install it. Once it is
 installed, you have an additional menu item for LDAP Server settings.
 
-## Testing Environment and Help
+## Environment for Testing
 
-The directory *.test* contains some basic config files for test environment
-with OMV5. I need someone to test with other LDAP services.
-
-Environment:
-* Openmediavault 5.5.9-1 (Usul) with running SAMBA service
+* OpenMediaVault 5.6.26-1 (Usul) with running SAMBA service
 * OpenLDAP 2.4.47 server (setup with `smbldap-populate`)
-* all smbldap-tools 0.9.9-1 installed on OMV5
+* all smbldap-tools 0.9.9-1 installed on OpenMediaVault
+
+## Troubleshooting
 
 If you get in trouble, try:
 * update system with `apt-get update` and `apt-upgrade`
