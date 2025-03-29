@@ -36,11 +36,19 @@
 			},
 			"usersuffix": {
 			    "type": "string",
-				"required": true
+				"required": false
 			},
 			"groupsuffix": {
 			    "type": "string",
-				"required": true
+				"required": false
+			},
+			"machinesuffix": {
+			    "type": "string",
+				"required": false
+			},
+			"idmapsuffix": {
+			    "type": "string",
+				"required": false
 			},
 			"enablepam": {
 			    "type": "boolean",

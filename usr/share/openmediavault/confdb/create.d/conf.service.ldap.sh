@@ -37,7 +37,9 @@ set -e
 #       <rootbindpw></rootbindpw>
 #       <usersuffix></usersuffix>
 #       <groupsuffix></groupsuffix>
-#       <enablepam>0|1</enablepam>
+#       <machinesuffix></machinesuffix>
+#       <idmapsuffix></idmapsuffix>
+#       <enablepam>1</enablepam>
 #       <extraoptions></extraoptions>
 #       <extraclientoptions></extraclientoptions>
 #     </ldap>
@@ -55,6 +57,8 @@ if ! omv_config_exists "/config/services/ldap"; then
 	omv_config_add_key "/config/services/ldap" "rootbindpw" ""
 	omv_config_add_key "/config/services/ldap" "usersuffix" "ou=Users"
 	omv_config_add_key "/config/services/ldap" "groupsuffix" "ou=Groups"
+	omv_config_add_key "/config/services/ldap" "machinesuffix" "ou=Computers"
+	omv_config_add_key "/config/services/ldap" "idmapsuffix" "ou=idmap"
 	omv_config_add_key "/config/services/ldap" "enablepam" "1"
 	omv_config_add_key "/config/services/ldap" "extraoptions" ""
 	omv_config_add_key "/config/services/ldap" "extraclientoptions" ""

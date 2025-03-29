@@ -1,0 +1,8 @@
+version: "1.0"
+type: route
+data:
+  url: "/services/ldap"
+  title: _("LDAP")
+  editing: true
+  notificationTitle: _('Updated LDAP settings.')
+  component: omv-services-ldap-form-page

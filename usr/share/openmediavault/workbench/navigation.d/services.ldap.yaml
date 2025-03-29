@@ -1,0 +1,8 @@
+version: "1.0"
+type: navigation-item
+data:
+  path: "services.ldap"
+  text: _("LDAP")
+  position: 5
+  icon: "mdi:account-card-outline"
+  url: "/services/ldap"

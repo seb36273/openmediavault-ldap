@@ -41,6 +41,14 @@
 		    "type": "string",
 			"default": "ou=Groups"
 		},
+		"machinesuffix": {
+		    "type": "string",
+			"default": "ou=Computers"
+		},
+		"idmapsuffix": {
+		    "type": "string",
+			"default": "ou=idmap"
+		},
 		"enablepam": {
 		    "type": "boolean",
 			"default": true

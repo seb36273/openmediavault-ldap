@@ -2,16 +2,13 @@ Source: openmediavault-ldap
 Section: admin
 XB-Plugin-Section: network
 Priority: optional
-Maintainer: Volker Theile <volker.theile@openmediavault.org>
-Uploaders: Seb36273 <devel@nareo.de>
-Build-Depends: debhelper (>> 7), gettext
-Standards-Version: 3.9.6
-Homepage: http://www.openmediavault.org
+Maintainer: OpenMediaVault Plugin Developers <plugins@omv-extras.org>
+Build-Depends: debhelper (>= 12 )
+Standards-Version: 4.3.0
 
 Package: openmediavault-ldap
 Architecture: all
-Depends: openmediavault (>= 5.0), libnss-ldap, libpam-ldap
-Conflicts: openmediavault-ad
+Depends: openmediavault (>= 6.5), libnss-ldap, libpam-ldap
 Priority: optional
 Description: openmediavault Lightweight Directory Access Protocol (LDAP) plugin
  LDAP is an application protocol for accessing and maintaining distributed
