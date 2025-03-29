@@ -1,8 +1,14 @@
+openmediavault-ldap (6.1.4~1) stable; urgency=low
+
+  * Adapt to openmediavault 6 (Shaitan).
+
+ -- Seb36273 <devel@nareo.de>  Tue, 29 Mar 2025 21:54:18 +0100
+
 openmediavault-ldap (5.3.9~1) stable; urgency=low
 
   * Adapt to openmediavault 5 (Usul).
 
- -- Seb36273 <devel@nareo.de>  Tue, 18 Aug 2020 13:07:43 +0100
+ -- Seb36273 <devel@nareo.de>  Tue, 18 Aug 2020 13:07:43 +0200
 
 openmediavault-ldap (4.0.6-1) stable; urgency=low
 
