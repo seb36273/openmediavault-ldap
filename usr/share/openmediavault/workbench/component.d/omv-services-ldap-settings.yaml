@@ -64,7 +64,7 @@ data:
         hint: _("Specifies the group suffix, e.g. 'ou=Groups'.")
         value: "ou=Groups"
       - type: textInput
-        name: machineuffix
+        name: machinesuffix
         label: _("Machines suffix")
         hint: _("Specifies the machines suffix, e.g. 'ou=Computers'.")
         value: "ou=Computers"
