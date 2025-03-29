@@ -43,7 +43,7 @@ Ext.define("OMV.module.admin.privilege.ldap.Settings", {
 				xtype: "checkbox",
 				name: "enable",
 				fieldLabel: _("Enable"),
-				checked: true
+				checked: false
 			},{
 				xtype: "textfield",
 				name: "host",

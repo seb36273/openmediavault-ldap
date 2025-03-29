@@ -14,7 +14,7 @@ data:
       - type: checkbox
         name: enable
         label: _("Enabled")
-        value: true
+        value: false
       - type: numberInput
         name: port
         label: _("Port")

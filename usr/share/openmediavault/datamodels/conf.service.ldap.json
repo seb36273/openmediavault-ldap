@@ -9,7 +9,7 @@
 	"properties": {
 		"enable": {
 			"type": "boolean",
-			"default": true
+			"default": false
 		},
 		"host": {
 		    "type": "string"

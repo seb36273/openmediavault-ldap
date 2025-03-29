@@ -28,7 +28,7 @@ set -e
 # <config>
 #   <services>
 #     <ldap>
-#       <enable>1</enable>
+#       <enable>0</enable>
 #       <host></host>
 #       <port>389</port>
 #       <enablessl>0</enablessl>
@@ -39,7 +39,7 @@ set -e
 #       <groupsuffix></groupsuffix>
 #       <machinesuffix></machinesuffix>
 #       <idmapsuffix></idmapsuffix>
-#       <enablepam>0|1</enablepam>
+#       <enablepam>1</enablepam>
 #       <extraoptions></extraoptions>
 #       <extraclientoptions></extraclientoptions>
 #     </ldap>
@@ -48,7 +48,7 @@ set -e
 ########################################################################
 if ! omv_config_exists "/config/services/ldap"; then
 	omv_config_add_node "/config/services" "ldap"
-	omv_config_add_key "/config/services/ldap" "enable" "1"
+	omv_config_add_key "/config/services/ldap" "enable" "0"
 	omv_config_add_key "/config/services/ldap" "host" ""
 	omv_config_add_key "/config/services/ldap" "port" "389"
 	omv_config_add_key "/config/services/ldap" "enablessl" "0"
