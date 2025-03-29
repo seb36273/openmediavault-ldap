@@ -53,7 +53,8 @@ Ext.define("OMV.module.admin.privilege.ldap.Settings", {
 				plugins: [{
 					ptype: "fieldinfo",
 					text: _("The FQDN or IP address of the server.")
-				}]
+				}],
+				value: 'ldap.example.net'
 			},{
 				xtype: "numberfield",
 				name: "port",
@@ -71,7 +72,7 @@ Ext.define("OMV.module.admin.privilege.ldap.Settings", {
 			},{
 				xtype: "checkbox",
 				name: "enablessl",
-				fieldLabel: _("Enable SSL/TLS"),
+				fieldLabel: _("Enable explicit SSL"),
 				checked: false,
 				boxLabel: _("Enable secure connection.")
 			},{
@@ -82,7 +83,8 @@ Ext.define("OMV.module.admin.privilege.ldap.Settings", {
 				plugins: [{
 					ptype: "fieldinfo",
 					text: _("Specifies the base distinguished name (DN) to use as search base, e.g. 'dc=example,dc=net'.")
-				}]
+				}],
+				value: 'dc=example,dc=net'
 			},{
 				xtype: "textfield",
 				name: "rootbinddn",
@@ -100,7 +102,8 @@ Ext.define("OMV.module.admin.privilege.ldap.Settings", {
 				plugins: [{
 					ptype: "fieldinfo",
 					text: _("Specifies the credentials with which to bind.")
-				}]
+				}],
+				value: 'cn=manager,dc=example,dc=net'
 			},{
 				xtype: "textfield",
 				name: "usersuffix",

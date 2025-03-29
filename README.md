@@ -16,15 +16,21 @@ Be aware: This code was tested in a clean environment with fresh installed OMV5 
 I am not responsible for loss of your data! Please make always a full backup
 of your OMV machine before installing this plugin!
 
+## Install dependencies
+
+`sudo apt install libnss-ldap libpam-ldap smbldap-tools`
+
 ## Build DEBIAN package
 
-Create DEB package with `dpkg-buildpackage -uc -us` inside the
-source directory. The \*.deb file will be placed in the parent
+Install `sudo apt install debhelper`.
+
+Create `.deb` package with `dpkg-buildpackage -uc -us` inside the
+source directory. The `.deb` file will be placed in the parent
 directory.
 
 ## Install Plugin into Openmediavault 5
 
-Upload the generated \*.deb file to OMV5 plugins and install it. Once it is
+Upload the generated `.deb` file to OMV5 plugins and install it. Once it is
 installed, you have an additional menu item for LDAP Server settings.
 
 ## Testing Environment and Help
