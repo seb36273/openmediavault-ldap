@@ -4,10 +4,13 @@
 {%- set smb_ldap_sam_trusted = salt['pillar.get']('default:OMV_SAMBA_LDAP_LDAPSAMTRUSTED', 'no') -%}
 #======================= LDAP Settings =======================
 security = {{ smb_security }}
-passdb backend = ldapsam:ldap{% if config.enablessl | to_bool %}'s'{% endif %}://{{ config.host }}{% if config.port | string | length > 0 %}:{{ config.port }}{% endif %}
+passdb backend = ldapsam:ldap{% if config.enablessl | to_bool %}s{% endif %}://{{ config.host }}{% if config.port | string | length > 0 %}:{{ config.port }}{% endif %}
 ldap suffix = {{ config.base }}
 ldap admin dn = {{ config.rootbinddn }}
-ldap user suffix = {{ config.usersuffix }}
-ldap group suffix = {{ config.groupsuffix }}
+{% if config.usersuffix | string | length > 0 %}ldap user suffix = {{ config.usersuffix }}{% endif %}
+{% if config.groupsuffix | string | length > 0 %}ldap group suffix = {{ config.groupsuffix }}{% endif %}
+{% if config.machinesuffix | string | length > 0 %}ldap machine suffix = {{ config.machinesuffix }}{% endif %}
+{% if config.idmapsuffix | string | length > 0 %}ldap idmap suffix = {{ config.idmapsuffix }}{% endif %}
+ldap ssl = {{ smb_ldap_ssl }}
 ldap passwd sync = {{ smb_ldap_pwdsync }}
 ldapsam:trusted = {{ smb_ldap_sam_trusted }}
