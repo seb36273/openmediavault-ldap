@@ -1,7 +1,7 @@
 version: "1.0"
 type: component
 data:
-  name: omv-services-ldap-settings
+  name: omv-services-ldap-form-page
   type: formPage
   config:
     request:
@@ -24,11 +24,12 @@ data:
           min: 1
           max: 65535
           patternType: port
+          required: true
       - type: textInput
         name: host
         label: _("Host")
         hint: _("The FQDN or IP address of the server.")
-        value: 'ldap.example.net'
+        value: "ldap.example.net"
         validators:
           required: true
       - type: checkbox
@@ -51,8 +52,6 @@ data:
         label: _("Password")
         hint: _("Specifies the credentials with which to bind.")
         value: ""
-        modifiers:
-          - type: hidden
       - type: textInput
         name: usersuffix
         label: _("Users suffix")
@@ -93,4 +92,4 @@ data:
       - template: cancel
         execute:
           type: url
-          url: /services/ldap/settings
+          url: "/services"
