@@ -33,8 +33,8 @@ installed, you have an additional menu item for LDAP Server settings.
 
 ## Environment for Testing
 
-* OpenMediaVault 6.9.16-1 (Usul) with running SAMBA service
-* OpenLDAP 2.4.47 server (setup with `smbldap-populate`)
+* OpenMediaVault 6.9.16-1 (Shaitan) with running SAMBA service
+* OpenLDAP 2.4.57+dfsg-3+deb11u1 server (setup with `smbldap-populate`)
 * all smbldap-tools 0.9.11-2 installed on OpenMediaVault
 
 ## Troubleshooting
