@@ -17,6 +17,6 @@ configure_samba_global_ldap:
 
 configure_samba_passwd_ldap:
   cmd.run:
-    - name: "smbpasswd -w \"{{ config.rootbindpw }}\" 2>&1"
+    - name: "smbpasswd -w '{{ config.rootbindpw }}' 2>&1"
 
 {% endif %}
