@@ -7,32 +7,19 @@ set -e
 
 case "$1" in
 	configure)
-		########################################################################
-		# Set the default settings of the LDAP package to those expected by
-		# OpenMediaVault.
-		########################################################################
 		if [ -z "$2" ]; then
 			echo "Updating system environment ..."
 			pam-auth-update --force --package --remove ldap
 		fi
 
-		########################################################################
-		# Activate trigger to rebuild workbench configuration files.
-		########################################################################
 		dpkg-trigger update-workbench
 
-		########################################################################
-		# Initialize and migrate configuration database.
-		########################################################################
 		echo "Updating configuration database ..."
 		omv-confdbadm create "conf.service.ldap"
 		if [ -n "$2" ]; then
 			omv-confdbadm migrate "conf.service.ldap" "${2}"
 		fi
 
-		########################################################################
-		# Action to be done depending on the previous version.
-		########################################################################
 		if dpkg --compare-versions "$2" lt-nl "3.1.6"; then
 			omv-mkconf ldap
 		fi

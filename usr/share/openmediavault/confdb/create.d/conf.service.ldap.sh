@@ -4,29 +4,6 @@ set -e
 
 . /usr/share/openmediavault/scripts/helper-functions
 
-########################################################################
-# Update the configuration.
-# <config>
-#   <services>
-#     <ldap>
-#       <enable>0</enable>
-#       <host></host>
-#       <port>389</port>
-#       <enablessl>0</enablessl>
-#       <base></base>
-#       <rootbinddn></rootbinddn>
-#       <rootbindpw></rootbindpw>
-#       <usersuffix></usersuffix>
-#       <groupsuffix></groupsuffix>
-#       <machinesuffix></machinesuffix>
-#       <idmapsuffix></idmapsuffix>
-#       <enablepam>1</enablepam>
-#       <extraoptions></extraoptions>
-#       <extraclientoptions></extraclientoptions>
-#     </ldap>
-#   </services>
-# </config>
-########################################################################
 if ! omv_config_exists "/config/services/ldap"; then
 	omv_config_add_node "/config/services" "ldap"
 	omv_config_add_key "/config/services/ldap" "enable" "0"

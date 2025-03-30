@@ -6,18 +6,12 @@ set -e
 . /usr/share/openmediavault/scripts/helper-functions
 
 remove_action() {
-	# Activate trigger to rebuild workbench configuration files.
 	dpkg-trigger update-workbench
 }
 
 case "$1" in
 	purge)
 		remove_action
-		# Remove the configuration data. Sadly we can not use 'omv-confdbadm'
-		# here because the database model has been removed already in a
-		# previous stage, see https://wiki.debian.org/MaintainerScripts.
-		# Because of that we need to use the helper tools to remove the
-		# configuration.
 		echo "Cleaning up configuration database ..."
 		omv_config_delete "/config/services/ldap"
 	;;

@@ -1,16 +1,10 @@
 <?php
 
 class OMVRpcServiceLDAP extends \OMV\Rpc\ServiceAbstract {
-	/**
-	 * Get the RPC service name.
-	 */
 	public function getName() {
 		return "LDAP";
 	}
 
-	/**
-	 * Initialize the RPC service.
-	 */
 	public function initialize() {
 		$this->registerMethod("getSettings");
 		$this->registerMethod("setSettings");
@@ -20,9 +14,8 @@ class OMVRpcServiceLDAP extends \OMV\Rpc\ServiceAbstract {
 	 * Get the LDAP configuration settings.
 	 * @param params The method parameters.
 	 * @param context The context of the caller.
-	 * @return An JSON object containing the fields \em enable, \em host,
-	 *   \em base, \em rootbinddn, \em rootbindpw, \em usersuffix,
-	 *   \em groupsuffix and \em extraoptions.
+	 * @return An JSON object containing the fields required
+	 *	to configure LDAP.
 	 */
 	function getSettings($params, $context) {
 		// Validate the RPC caller context.
@@ -36,15 +29,7 @@ class OMVRpcServiceLDAP extends \OMV\Rpc\ServiceAbstract {
 
 	/**
 	 * Set the LDAP configuration settings.
-	 * @param params An array containing the following fields:
-	 *   \em enable Boolean value indicating wether the service is enabled.
-	 *   \em host The FQDN or IP address of the LDAP server.
-	 *   \em base The base DN.
-	 *   \em rootbinddn The root bind DN.
-	 *   \em rootbindpw The password used to bind to the LDAP server.
-	 *   \em usersuffix The group suffix, e.g. ou=Users.
-	 *   \em groupsuffix The group suffix, e.g. ou=Groups.
-	 *   \em extraoptions The extra libnss.conf options.
+	 * @param params An array containing all of the fields and values.
 	 * @param context The context of the caller.
 	 * @return The stored configuration object.
 	 */
